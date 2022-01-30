@@ -6,5 +6,6 @@
     "repository": "github:stenito/renormalize",
     "homepage": "https://github.com/stenito/renormalize#readme",
     "url": "https://github.com/stenito/renormalize/issues",
-    "author": "Steven Pauwels <info@stenito.com>"
+    "author": "Steven Pauwels <info@stenito.com>",
+    "main": "./css/style.css"
 }
