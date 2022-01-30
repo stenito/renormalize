@@ -5,7 +5,21 @@
     "license": "MIT",
     "repository": "github:stenito/renormalize",
     "homepage": "https://github.com/stenito/renormalize#readme",
-    "url": "https://github.com/stenito/renormalize/issues",
-    "author": "Steven Pauwels <info@stenito.com>",
-    "main": "./css/style.css"
+    "bugs": {
+        "url": "https://github.com/stenito/renormalize/issues"
+    },
+    "author": {
+        "name": "Steven Pauwels",
+        "email": "info@stenito.com"
+    },
+    "main": "renormalize.scss",
+    "unpkg": "css/renormalize.css",
+    "keywords": [
+        "css",
+        "sass",
+        "scss",
+        "normalize",
+        "renormalize",
+        "html"
+    ]
 }

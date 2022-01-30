@@ -192,6 +192,21 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/src\/renormalize.scss" : {
+      "aP" : 1,
+      "bl" : 1,
+      "co" : 1,
+      "dP" : 10,
+      "ec" : 0,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/css\/renormalize.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/src\/scss\/00_settings\/_all.scss" : {
       "aP" : 1,
       "bl" : 1,
@@ -657,21 +672,6 @@
       "pg" : 0,
       "sct" : 0
     },
-    "\/src\/style.scss" : {
-      "aP" : 1,
-      "bl" : 1,
-      "co" : 1,
-      "dP" : 10,
-      "ec" : 0,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/css\/style.css",
-      "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
-    },
     "\/src\/UA stylesheets\/chrome.scss" : {
       "aP" : 1,
       "bl" : 1,
@@ -730,7 +730,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "brackets_orange",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 665230158.41739094
+    "lastBuiltDate" : 665233449.33306897
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
