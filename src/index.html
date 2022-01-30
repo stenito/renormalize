@@ -1,0 +1,3897 @@
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display:swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display:swap"
+          media="print"
+          onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display:swap"
+              media="all">
+    </noscript>
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Renormalize HTML</title>
+    <link rel="stylesheet"
+          href="style.css">
+    <link rel="stylesheet"
+          href="page.css">
+    <style>
+        [data-loadscreen] {
+            opacity: 1;
+            z-index: 10000;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2em;
+            text-align: center;
+            overflow-y: scroll;
+            font-family: sans-serif;
+        }
+
+        [data-loadscreen].hidden {
+            pointer-events: none;
+            display: none !important;
+            top: -100vh !important;
+        }
+
+    </style>
+</head>
+
+<body class="no-scroll">
+    <!-- FUTURE: banner => let the user choose if storage is for session or for always. Can always be changed later. -->
+    <!-- FUTURE: banner => learn more = send a link to an email so user is not taken away from the page. -->
+    <div id="banner"
+         data-cloasr-closing>
+        <div class="banner-inner">The website uses no cookies, no tracking, and no analytics. If you close this message, a meaningless random key/value pair is saved in local storage to avoid showing you this message again. <a onclick="closeElement(this, setLSO())">Close this message</a>
+            <div class="button-close"
+                 onclick="closeElement(this, setLSO())">
+                <svg focusable="false"
+                     width="15"
+                     height="15"
+                     viewBox="0 0 15 15">
+                    <path d="M.387.387l14.142 14.142m0-14.142L.387 14.529" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div data-loadscreen>
+        <noscript>Ya'll browser's not runnin' JavaScript? Hell ya'll... must be runnin' in the eighteen hundreds? </noscript>
+    </div>
+    <div class="container">
+        <main id="content">
+            <h1>Renormalize HTML</h1>
+            <p data-reno-subheading>A default style for HTML</p>
+            <!-- root elements OK -->
+            <section>
+                <h2 id="rootelements"
+                    data-toc>Root elements</h2>
+                <!-- html element -->
+                <article>
+                    <h3 id="html"><code>&lt;html&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-settings>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-behavior>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+html {
+    // Set box-sizing policy
+    box-sizing: border-box;
+
+    // Set font to a sans-serif font with as many weights as possible for all browsers. ==&gt; settings
+
+    font-family: $var-font-family-sans;
+
+    // Set font-weight to 200 to have a clear difference between normal, bolder and bold. Best enjoyed with font-smoothing on. ==&gt; settings
+    font-weight: $var-font-weight-default;
+
+    @if $set-font-smoothing {
+        -webkit-font-smoothing: antialiased;
+        font-smooth: always;
+    }
+
+    @if $set-text-rendering == 'auto' {
+        text-rendering: auto;
+    } @else if $set-text-rendering == 'speed' {
+        text-rendering: optimizeSpeed;
+    } @else {
+        text-rendering: geometricPrecision;
+    }
+
+    // Remove the text shadow on user text selection and set opaque selection color
+    ::selection {
+        background-color: $var-color-selection;
+        text-shadow: none;
+    }
+
+    font-size: 16px;
+
+    // Set default font color
+    color: $var-color-default;
+
+    // Set scroll behavior
+    @if $set-scroll-behavior {
+        scroll-behavior: $set-scroll-behavior;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- universal selector OK -->
+                <article>
+                    <h3 id="universalselector"><code>*</code> or universal selector</h3>
+                    <div class="tags type">
+                        <div class="tag"
+                             data-tag-type-settings>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <p>The universal selector or <code>*</code> inherits box-sizing from the <code>&lt;html&gt;</code> element. This allows third party plugins to set their own box-sizing policy.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+*,
+*:before,
+*::before,
+*:after,
+*::after {
+    // All children inherit box-sizing from HTML element (this allows third party plugins to set their own box-sizing policy).
+    box-sizing: inherit;
+
+    // Remove the black background flash on tap in iOS Safari.
+    -webkit-tap-highlight-color: transparent;
+    // SOMEDAY: -webkit-backface-visibility: hidden; // check if needed.
+}
+                    </code></pre>
+                </article>
+            </section>
+            <!-- sectioning root OK -->
+            <section>
+                <h2 id="sectioningroot"
+                    data-toc>Sectioning root</h2>
+                <!-- body element -->
+                <article>
+                    <h3 id="body"><code>&lt;body&gt;</code> element</h3>
+                    <div class="tags type">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+body {
+    // normalize.css
+    // Remove the margin in all browsers
+    margin: 0;
+}
+                    </code></pre>
+                </article>
+            </section>
+            <!-- content sectioning OK -->
+            <section>
+                <h2 id="contentsectioning"
+                    data-toc>Content sectioning</h2>
+                <!-- address element OK -->
+                <article>
+                    <h3 id="address"><code>&lt;address&gt;</code> element</h3>
+                    <div class="tags type">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Contact the author of this page:</p>
+                    <address> Email: <a href="mailto:info@stenito.com">info@stenito.com</a><br> Phone: <a href="tel:+334********">+32 4** ** ** **</a>
+                    </address>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+address {
+    // Set the font-style to normal
+    font-style: normal;
+}
+                    </code></pre>
+                </article>
+                <!-- article element OK -->
+                <article>
+                    <h3 id="article"><code>&lt;article&gt;</code> element</h3>
+                    <div class="tags type">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>This document uses the <code>&lt;article&gt;</code> spacing. Each element is an <code>&lt;article&gt;</code>.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+article {
+    // Set spacing between articles
+    margin-bottom: 5em;
+}
+                    </code></pre>
+                </article>
+                <!-- section element OK -->
+                <!-- h1 - h6 elements OK -->
+                <article>
+                    <h3 id="h"><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> elements</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">O</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="remark">Defining header level by using sections does not support assistive technology well. Normalize.css fixes visual issues. Avoid using sections and articles to specify header level. Renormalize overrides normalise.css font-size.</li>
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Note: <code>&lt;h1&gt;</code> is simulated to avoid double h1 in the document.</p>
+                    <p data-reno-h1>Heading level 1</p>
+                    <h2>Heading level 2</h2>
+                    <h3>Heading level 3</h3>
+                    <h4>Heading level 4</h4>
+                    <h5>Heading level 5</h5>
+                    <h6>Heading level 6</h6>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+h1 {
+    // normalize.css
+    // Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari.
+    font-size: 2em;
+    margin: 0.67em 0;
+
+    // renormalize
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.35em;
+}
+
+h5 {
+    font-size: 1.15em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+    margin: 1.5em 0 0.5em;
+    line-height: 1;
+}
+                    </code></pre>
+                </article>
+                <!-- hgroup element OK -->
+                <article>
+                    <h3 id="hgroup"><code>&lt;hgroup&gt;</code> element</h3>
+                    <p><code>&lt;hgroup&gt;</code> should not be used because no assistive technology supports it, and as a result it has a detrimental effect on assistance for headings placed within it. </p>
+                </article>
+                <!-- header element OK -->
+            </section>
+            <!-- text content OK -->
+            <section>
+                <h2 id="textcontent"
+                    data-toc>Text content</h2>
+                <!-- p element OK -->
+                <article>
+                    <h3 id="p"><code>&lt;p&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Praeterea iter est quasdam res quas ex communi. Mercedem aut nummos unde unde extricat, amaras. Etiam habebis sem dicantur magna mollis euismod. Excepteur sint obcaecat cupiditat non proident culpa.</p>
+                    <p>Quisque placerat facilisis egestas cillum dolore. Ambitioni dedisse scripsisse iudicaretur. Quo usque tandem abutere, Catilina, patientia nostra? Curabitur est gravida et libero vitae dictum. Quam diu etiam furor iste tuus nos eludet?</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+p {
+    // Set the line height to 1.5 to improve readability.
+    line-height: 1.5;
+
+    // Remove the top margin after a label.
+    label + &amp; {
+        margin-block-start: 0;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- hr element OK -->
+                <article>
+                    <h3 id="hr"><code>&lt;hr&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Plura mihi bona sunt, inclinet, amari petere vellent. Tityre, tu patulae recubans sub tegmine fagi dolor. Etiam habebis sem dicantur magna mollis euismod.</p>
+                    <hr>
+                    <p>Cum sociis natoque penatibus et magnis dis parturient. Ambitioni dedisse scripsisse iudicaretur. A communi observantia non est recedendum.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+hr {
+    // normalize.css
+    // 1. Add the correct box sizing in Firefox.
+    // 2. Show the overflow in Edge and IE
+    box-sizing: content-box; // 1
+    height: 0; // 1
+    overflow: visible; // 2
+
+    // renormalize
+    border: none;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+}
+                    </code></pre>
+                </article>
+                <!-- blockquote element -->
+                <article>
+                    <h3 id="blockquote"><code>&lt;blockquote&gt;</code> element </h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-semantics>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Extra</h4>
+                    <p> WHATWG.org specifies that a <code>&lt;cite&gt;</code> element can not hold a persons name since a person is not a piece of work. Renormalize uses a <code>+ span</code> rule to add the same styling as the cite element but keep the person out of the cite element.</p>
+                    <h4>Examples</h4>
+                    <h5>Using a paragraph</h5>
+                    <blockquote cite="https://www.huxley.net/bnw/four.html">
+                        <p>Words can be like X-rays, if you use them properly, they'll go through anything. You read and you're pierced.</p>Aldous Huxley: <cite>Brave New World</cite>
+                    </blockquote>
+                    <blockquote cite="https://www.huxley.net/bnw/four.html">
+                        <p>Words can be like X-rays, if you use them properly, they'll go through anything. You read and you're pierced.</p>
+                        <cite>Brave New World</cite> <span>by Aldous Huxley</span>
+                    </blockquote>
+                    <h5>Without paragraph</h5>
+                    <blockquote cite="https://www.huxley.net/bnw/four.html"> Words can be like X-rays, if you use them properly, they'll go through anything. You read and you're pierced. <cite>Brave New World</cite> <span>by Aldous Huxley</span>
+                    </blockquote>
+                    <h4>HTML</h4>
+                    <pre><code data-code-type="HTML">
+&lt;h5&gt;Using a paragraph&lt;/h5&gt;
+
+    &lt;blockquote cite=&quot;https://www.huxley.net/bnw/four.html&quot;&gt;
+        &lt;p&gt;Words can be like X-rays, if you use them properly,
+        they'll go through anything. You read and you're pierced.&lt;/p&gt;
+        Aldous Huxley: &lt;cite&gt;Brave New World&lt;/cite&gt;
+    &lt;/blockquote&gt;
+
+    &lt;blockquote cite=&quot;https://www.huxley.net/bnw/four.html&quot;&gt;
+        &lt;p&gt;Words can be like X-rays, if you use them properly,
+        they'll go through anything. You read and you're pierced.&lt;/p&gt;
+        &lt;cite&gt;Brave New World&lt;/cite&gt; &lt;span&gt;by Aldous Huxley&lt;/span&gt;
+    &lt;/blockquote&gt;
+
+&lt;h5&gt;Without paragraph&lt;/h5&gt;
+
+    &lt;blockquote cite=&quot;https://www.huxley.net/bnw/four.html&quot;&gt;
+        Words can be like X-rays, if you use them properly,
+        they'll go through anything. You read and you're pierced.
+        &lt;cite&gt;Brave New World&lt;/cite&gt; &lt;span&gt;by Aldous Huxley&lt;/span&gt;
+    &lt;/blockquote&gt;
+                    </code></pre>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+blockquote {
+    border-inline-start: 3px solid #eeeeee;
+    color: #888888;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    padding-inline-start: 1rem;
+    margin-inline-start: 1em;
+    margin-inline-end: 1em;
+    cite {
+        color: #666666;
+        display: inline-block;
+        font-weight: bolder;
+    }
+}
+                    </code></pre>
+                    <h4>Extra SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+blockquote {
+    cite {
+        + span {
+            color: #666666;
+            display: inline;
+            font-weight: bolder;
+            margin-top: 0.5em;
+        }
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- ol element OK -->
+                <article>
+                    <h3 id="ol"><code>&lt;ol&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Examples</h4>
+                    <ol>
+                        <li>First</li>
+                        <li>Second <ol>
+                                <li>First</li>
+                                <li>Second <ol>
+                                        <li>First</li>
+                                        <li>Second</li>
+                                        <li>Last</li>
+                                    </ol>
+                                </li>
+                                <li>Last</li>
+                            </ol>
+                        </li>
+                        <li>Last</li>
+                    </ol>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation. Quo usque tandem abutere, Catilina, patientia nostra? A communi observantia non est recedendum. </p>
+                    <ol>
+                        <li>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation. Cras mattis iudicium purus sit amet fermentum. Contra legem facit qui id facit quod lex prohibet. Quo usque tandem abutere, Catilina, patientia nostra?</li>
+                        <li>Hi omnes lingua, institutis, legibus inter se differunt.</li>
+                    </ol>
+                    <p>Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh. Donec sed odio operae, eu vulputate felis rhoncus. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+ol {
+    // Set the lineheight to 1.5 to improve readability.
+    line-height: 1.5;
+}
+                    </code></pre>
+                </article>
+                <!-- ul element OK -->
+                <article>
+                    <h3 id="ul"><code>&lt;ul&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Examples</h4>
+                    <ul>
+                        <li>First</li>
+                        <li>Second <ul>
+                                <li>First</li>
+                                <li>Second <ul>
+                                        <li>First</li>
+                                        <li>Second</li>
+                                        <li>Last</li>
+                                    </ul>
+                                </li>
+                                <li>Last</li>
+                            </ul>
+                        </li>
+                        <li>Last</li>
+                    </ul>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation. Quo usque tandem abutere, Catilina, patientia nostra? A communi observantia non est recedendum. </p>
+                    <ul>
+                        <li>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation. Cras mattis iudicium purus sit amet fermentum. Contra legem facit qui id facit quod lex prohibet. Quo usque tandem abutere, Catilina, patientia nostra?</li>
+                        <li>Hi omnes lingua, institutis, legibus inter se differunt.</li>
+                    </ul>
+                    <p>Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh. Donec sed odio operae, eu vulputate felis rhoncus. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+ul {
+    // Set the lineheight to 1.5 to improve readability.
+    line-height: 1.5;
+}
+                    </code></pre>
+                </article>
+                <!-- li element OK -->
+                <!-- dl, dt and dd elements OK -->
+                <article>
+                    <h3 id="dl"><code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> elements </h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <h5>Cryptids of Cornwall:</h5>
+                    <dl>
+                        <dt>Beast of Bodmin</dt>
+                        <dd>A large feline inhabiting Bodmin Moor.</dd>
+                        <dt>Morgawr</dt>
+                        <dd>A sea serpent.</dd>
+                        <dt>Owlman</dt>
+                        <dd>A giant owl-like creature.</dd>
+                        <dt>A multiline test</dt>
+                        <dd>Mercedem aut nummos unde unde extricat, amaras. Cum ceteris in veneratione tui montes, nascetur mus. Mercedem aut nummos unde unde extricat, amaras. Cum ceteris in veneratione tui montes, nascetur mus. </dd>
+                    </dl>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+dl {
+    // Set the lineheight to 1.5 to improve readability.
+    line-height: 1.5;
+    dt {
+        // Set definition term a bit bolder.
+        font-weight: bolder;
+    }
+    dd {
+        // Add spacing to improve readability.
+        margin-bottom: 0.75em;
+        margin-inline-start: 1rem;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- figure and figcaption elements OK -->
+                <article>
+                    <h3 id="figure"><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> elements</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-javascript>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <p>Wrapping text around a figure (or any other element) without using <code>float: left;</code> or <code>float: right;</code> is not possible.</p>
+                    <p>Since <code>float</code> does not support RTL out of the box and <code>float: inline-start;</code> and <code>float: inline-end;</code> have no browser support yet, Renormalize uses JavaScript to change all <code>float: left;</code> rules on elements to <code>float: right;</code> and vice versa based on the direction set in the <code>&lt;html&gt;</code> direction attribute, eg. <code>&lt;dir="rtl"&gt;</code>. </p>
+                    <h4>Examples</h4>
+                    <figure>
+                        <img id="officeview"
+                             width="4"
+                             height="3"
+                             src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                        <figcaption>office view &vert; <small>&copy;</small> HBG 2018</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Etiam habebis sem dicantur magna mollis euismod. Ab illo tempore, ab est sed immemorabili. Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor gravida, placerat libero vel, euismod. Nihil hic munitissimus habendi senatus locus, nihil horum?</p>
+                    <figure id="officeview2"
+                            class="float-left">
+                        <img src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                        <figcaption>office view &vert; <small>&copy;</small> HBG 2018</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Etiam habebis sem dicantur magna mollis euismod. Ab illo tempore, ab est sed immemorabili. Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor gravida, placerat libero vel, euismod. Nihil hic munitissimus habendi senatus locus, nihil horum?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Etiam habebis sem dicantur magna mollis euismod. Ab illo tempore, ab est sed immemorabili. Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor gravida, placerat libero vel, euismod. Nihil hic munitissimus habendi senatus locus, nihil horum?</p>
+                    <h4>HTML</h4>
+                    <pre><code data-code-type="html">
+&lt;figure&gt;
+    &lt;img width=&quot;100%&quot;
+            height=&quot;auto&quot;
+            src=&quot;https://loremflickr.com/600/400/elephant&quot;
+            alt=&quot;Elephant at sunset&quot;&gt;
+    &lt;figcaption&gt;Should be a random elephant&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Lorem ipsum dolor ... horum?&lt;/p&gt;
+
+&lt;figure class=&quot;float-left&quot;
+        style=&quot;width: 50%;&quot;&gt;
+    &lt;img width=&quot;100%&quot;
+            height=&quot;auto&quot;
+            src=&quot;https://loremflickr.com/600/400/elephant&quot;
+            alt=&quot;Elephant at sunset&quot;&gt;
+    &lt;figcaption&gt;Should be a random elephant&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Lorem ipsum dolor ... horum?&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor ... horum?&lt;/p&gt;
+                    </code></pre>
+                    <h4>JavaScript</h4>
+                    <pre><code data-code-type="JavaScript">
+let direction = document.querySelector(&quot;html&quot;).getAttribute(&quot;dir&quot;),
+
+const floats = (nodeTypes, direction) =&gt; {
+    const elements = document.querySelectorAll(nodeTypes);
+    elements.forEach((element) =&gt; {
+        if (direction == &quot;rtl&quot;) {
+            if (getComputedStyle(element).float == &quot;left&quot;) {
+                element.style.float = &quot;right&quot;;
+            } else if (getComputedStyle(element).float == &quot;right&quot;) {
+                element.style.float = &quot;left&quot;;
+            }
+        } else {
+            element.style.float = getComputedStyle(element).float;
+        }
+    });
+}
+
+floats(&quot;figure, image&quot;, direction);
+                    </code></pre>
+                </article>
+                <!-- div element OK -->
+            </section>
+            <!-- text level semantics OK -->
+            <section>
+                <h2 id="textlevelsemantics"
+                    data-toc>Text level semantics</h2>
+                <!-- a element OK -->
+                <article>
+                    <h3 id="a"><code>&lt;a&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <p><a data-example>This paragraph has an anchor without <code>&lt;href&gt;</code> attribute and that has no styling.</a></p>
+                    <p><a href="#">This is a link</a>.</p>
+                </article>
+                <!-- abbr element OK -->
+                <article>
+                    <h3 id="abbr"><code>&lt;abbr&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-semantics>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-behavior>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="remark">The title attribute is not visible on touch devices so it should not be marked as something that suggests interaction.</li>
+                    </ul>
+                    <h4>Example</h4>
+                    <p><abbr title="HyperText Markup Language">HTML</abbr> is an abbreviation. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+abbr {
+    &amp;[title] {
+        // normalize.css
+        // 1. Remove the bottom border in Chrome 57-
+        border-bottom: none; // 1
+
+        // renormalize the
+        text-decoration: none
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- b element OK -->
+                <article>
+                    <h3 id="b"><code>&lt;b&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <p>Use the <code>&lt;b&gt;</code> element only when the <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, or <code>&lt;mark&gt;</code> elements don't fit. The <code>&lt;strong&gt;</code> element represents text of certain importance, <code>&lt;em&gt;</code> puts some emphasis on the text and the <code>&lt;mark&gt;</code> element represents text of certain relevance.</p>
+                    <h4>Example</h4>
+                    <p>The two most popular science courses offered by the school are <b>chemistry</b> (the study of chemicals and the composition of substances) and <b>physics</b> (the study of the nature and properties of matter and energy).</p>
+                    <p>The use of <code>bolder</code> instead of <code>bold</code> allows <code>&lt;b&gt;</code> in <code>&lt;b&gt;</code> nesting. <b>Gallia est omnis <b>divisa <b>lorem es</b> in partes</b> tres, quarum</b>. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+b {
+    // normalize.css
+    // Add the correct font weight in Chrome, Edge, and Safari
+    font-weight: bolder;
+}
+                    </code></pre>
+                </article>
+                <!-- bdi element RTL (OK) -->
+                <!-- cite element OK -->
+                <article>
+                    <h3 id="cite"><code>&lt;cite&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-semantics>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Extra</h4>
+                    <p> WHATWG.org specifies that a <code>&lt;cite&gt;</code> element can not hold a persons name since a person is not a piece of work. Renormalize uses a <code>+ span</code> rule to add the same styling as the cite element but keep the person out of the cite element.</p>
+                    <h4>Examples</h4>
+                    <p>More information can be found in <cite>[ISO-0000]</cite>. </p>
+                    <p>You can read more in <cite>Brave New World</cite>
+                        <span>by Aldous Huxley</span>
+                    </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+cite {
+    display: inline-block;
+}
+                    </code></pre>
+                    <h4>Extra SCSS</h4>
+                    <pre><code data-code-type="scss">
+cite {
+    + span {
+        font-style: italic;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- data element OK -->
+                <!-- dfn element OK -->
+                <article>
+                    <h3 id="dfn"><code>&lt;dfn&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-semantics>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-behavior>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="todo">Find a solution to show details (abbr) or replace the title attribute.</li>
+                        <li class="remark">The title attribute is not visible on touch devices so it should not be used. The tooltip appearance is too delayed to be practical.</li>
+                    </ul>
+                    <p>The <code>&lt;dfn&gt;</code> HTML element is used to indicate the term being defined within the context of a definition phrase or sentence. The <code>&lt;p&gt;</code> element, the <code>&lt;dt&gt;</code>/<code>&lt;dd&gt;</code> pairing, or the <code>&lt;section&gt;</code> element which is the nearest ancestor of the <code>&lt;dfn&gt;</code> is considered to be the definition of the term. <cite><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn">MDN: The Definition element</a></cite></p>
+                    <h4>Examples</h4>
+                    <p>A <dfn>validator</dfn> is a program that checks for syntax errors in code or documents.</p>
+                    <p>The term <dfn>bandwidth</dfn> describes the measure of how much information can pass through a data connection in a given amount of time.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+dfn {
+    font-weight: bolder;
+    font-style: normal;
+}
+                    </code></pre>
+                </article>
+                <!-- em element OK -->
+                <article>
+                    <h3 id="em"><code>&lt;em&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <p>The <code>&lt;em&gt;</code> element marks text that has stress emphasis. The <code>&lt;em&gt;</code> element can be nested, with each level of nesting indicating a greater degree of emphasis.</p>
+                    <h4>Examples</h4>
+                    <p>Get out of bed <em>now</em>!</p>
+                    <p>We <em>had</em> to do something about it.</p>
+                    <p>This is <em>not. </em> <em><em>a. </em></em><em><em><em>drill!</em></em></em></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+em {
+    font-weight: bolder;
+    font-style: normal;
+}
+                    </code></pre>
+                </article>
+                <!-- i element OK -->
+                <!-- kbd element OK -->
+                <article>
+                    <h3 id="kbd"><code>&lt;kbd&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="todo">Replace data-os CSS content with a JS version because content in ::before or ::after attributes is not added to the DOM.</li>
+                    </ul>
+                    <h4>Extra</h4>
+                    <p>You can wrap the <code>&lt;kbd&gt;</code> content in a <code>&lt;span class="kbd"&gt;</code>
+                        <code>&lt;/span&gt;</code> tag to avoid line breaks in the keyboard combination.
+                    </p>
+                    <p>Add attribute <code>data-os="Mac"</code>to the <code>&lt;kbd&gt;</code> tag to set a OS indication marker for Mac on the tag. Replace Mac with Win or something else for another OS. </p>
+                    <h4>Example</h4>
+                    <p>Tityre, tu patulae recubans sub tegmine fagi dolor. Idque Caesaris facere voluntate liceret: sese habere. Quam diu etiam furor iste tuus nos eludet? You can press <span class="kbd"><kbd>shift</kbd> + <kbd data-os="Mac">command</kbd> / <kbd data-os="Win-Lin">ctrl</kbd> + <kbd>T</kbd></span> to make it happen! Ullamco laboris nisi ut aliquid ex ea commodi consequat. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="scss">
+kbd {
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    display: inline-block;
+    font-family: $var-font-family-sans;
+    font-size: 0.85em;
+    font-weight: 400;
+    padding: 0 0.5em;
+    white-space: nowrap;
+}
+                    </code></pre>
+                    <h4>Extra SCSS</h4>
+                    <pre><code data-code-type="scss">
+kbd {
+    &amp;[data-os] {
+        &amp;::before {
+            content: attr(data-os);
+            position: absolute;
+            top: -35%;
+            left: 0.5em;
+            font-size: 50%;
+            background-color: white;
+            padding: 0 0.25em;
+            color: #999999;
+        }
+    }
+}
+.kbd {
+    white-space: nowrap;
+}
+                    </code></pre>
+                </article>
+                <!-- mark element OK -->
+                <!-- pre element OK -->
+                <!-- q element OK -->
+                <!-- ruby, rp and rt elements OK -->
+                <!-- s element OK -->
+                <article>
+                    <h3 id="s"><code>&lt;s&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>There is something <s>irrelevant</s> in this paragraph. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+s {
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+}
+                    </code></pre>
+                </article>
+                <!-- small element OK -->
+                <article>
+                    <h3 id="small"><code>&lt;small&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>There will be something <small>small</small> in this paragraph.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+small {
+    // normalize.css
+    // Add the correct font size in all browsers
+    font-size: 80%;
+
+    // renormalize (TODO: why?)
+    line-height: 0.6 !important;
+}
+</code></pre>
+                </article>
+                <!-- span element OK -->
+                <!-- strong element OK -->
+                <article>
+                    <h3 id="strong"><code>&lt;strong&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><strong>Strong</strong> kids are not to be ignored!</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+strong {
+    // normalize.css
+    // Add the correct font weight in Chrome, Edge, and Safari
+    font-weight: bolder;
+}
+                    </code></pre>
+                </article>
+                <!-- sub element OK -->
+                <article>
+                    <h3 id="sub"><code>&lt;sub&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Quae vero <sub>auctorem</sub> ab fiducia dicuntur. Contra legem facit qui id facit quod lex prohibet. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+sub
+{
+    // normalize.css
+    // Prevent `sub` and `sup` elements from affecting the line height in all browsers
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+
+    // Correct position
+    bottom: -0.25em;
+}
+                    </code></pre>
+                </article>
+                <!-- sup element OK -->
+                <article>
+                    <h3 id="sup"><code>&lt;sup&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>Quae vero <sup>auctorem</sup> ab fiducia dicuntur. Contra legem facit qui id facit quod lex prohibet. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+sup {
+    // normalize.css
+    // Prevent `sub` and `sup` elements from affecting the line height in all browsers
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+
+    // Correct position
+    top: -0.5em;
+}
+                    </code></pre>
+                </article>
+                <!-- time element OK -->
+                <article>
+                    <h3 id="time"><code>&lt;time&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>The Cure will be celebrating their 40th anniversary on <time datetime="2018-07-07">July 7</time> in London's Hyde Park.</p>
+                    <p>The concert starts at <time datetime="20:00">20:00</time> and you'll be able to enjoy the band for at least <time datetime="PT2H30M">2h 30m</time>.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+time {
+    font-weight: bolder;
+}
+                    </code></pre>
+                </article>
+                <!-- u element OK -->
+                <!-- var element OK -->
+                <article>
+                    <h3 id="var"><code>&lt;var&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p>(<var>x</var>+<var>y</var>) is a binominal.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+var {
+    // font-family: monospace-monospace;
+    padding: 0 0.25em;
+    font-family: $var-font-family-mono;
+}
+                    </code></pre>
+                </article>
+                <!-- wbr element OK -->
+            </section>
+            <!-- image and multimedia OK -->
+            <section>
+                <h2 id="imageandmultimedia"
+                    data-toc>Image and multimedia</h2>
+                <!-- img element OK -->
+                <article>
+                    <h3 id="img"><code>&lt;img&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <img class="half float-left"
+                         width="4"
+                         height="3"
+                         src="assets/office-view.jpg"
+                         alt="photograph - office view - copyright HBG 2018">
+                    <p>Contra legem facit qui id facit quod lex prohibet. Morbi fringilla convallis sapien, id pulvinar odio volutpat. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</p>
+                    <p>Quam temere in vitiis, legem sancimus haerentia. Cras mattis iudicium purus sit amet fermentum. Phasellus laoreet lorem vel dolor tempus vehicula. Fictum, deserunt mollit anim laborum astutumque!</p>
+                    <p>Quid securi etiam tamquam eu fugiat nulla pariatur. Non equidem invideo, miror magis posuere velit aliquet. Inmensae subtilitatis, obscuris et malesuada fames. Cum ceteris in veneratione tui montes, nascetur mus. At nos hinc posthac, sitientis piros Afros. Ab illo tempore, ab est sed immemorabili.</p>
+                    <p>Nihil hic munitissimus habendi senatus locus, nihil horum? Idque Caesaris facere voluntate liceret: sese habere. Salutantibus vitae elit libero, a pharetra augue.</p>
+                    <img class="half float-right"
+                         width="4"
+                         height="3"
+                         src="assets/office-view.jpg"
+                         alt="photograph - office view - copyright HBG 2018">
+                    <p>Quid securi etiam tamquam eu fugiat nulla pariatur. Non equidem invideo, miror magis posuere velit aliquet. Inmensae subtilitatis, obscuris et malesuada fames. Cum ceteris in veneratione tui montes, nascetur mus. At nos hinc posthac, sitientis piros Afros. Ab illo tempore, ab est sed immemorabili.</p>
+                    <p>Nihil hic munitissimus habendi senatus locus, nihil horum? Idque Caesaris facere voluntate liceret: sese habere. Salutantibus vitae elit libero, a pharetra augue.</p>
+                    <p>Qui ipsorum lingua Celtae, nostra Galli appellantur. Curabitur est gravida et libero vitae dictum. Magna pars studiorum, prodita quaerimus.</p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+img {
+    // normalize.css
+    // Remove the border on images inside links in IE 10
+    border-style: none;
+}
+                    </code></pre>
+                </article>
+                <!-- audio element OK -->
+                <article>
+                    <h3 id="audio"><code>&lt;audio&gt;</code> element</h3>
+                    <div class="tags">
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="remark">Styling: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Cross-browser_audio_basics#creating_your_own_custom_audio_player">MDN create your own audio player</a>
+                        </li>
+                    </ul>
+                    <h4>Example</h4>
+                    <audio controls
+                           src="assets/t-rex-roar.mp3"> Your browser does not support the <code>audio</code> element. </audio>
+                </article>
+                <!-- map and area elements OK -->
+                <!-- video element OK -->
+                <article>
+                    <h3 id="video"><code>&lt;video&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="remark">Styling: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics">MDN video player styling</a>
+                        </li>
+                    </ul>
+                    <h4>Example</h4>
+                    <p>With subtitles.</p>
+                    <video class="half"
+                           controls
+                           loop
+                           playsinline>
+                        <source src="assets/friday.mp4"
+                                type="video/mp4">
+                        <track default
+                               kind="captions"
+                               srclang="en"
+                               src="assets/friday.vtt">Your browser does not support the <code>video</code> element.
+                    </video>
+                </article>
+                <!-- track element OK -->
+            </section>
+            <!-- edits OK -->
+            <section>
+                <h2 id="edits"
+                    data-toc>Edits</h2>
+                <!-- ins and del elements -->
+                <article>
+                    <h3 id="ins"><code>&lt;ins&gt;</code> and <code>&lt;del&gt;</code> elements </h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Examples</h4>
+                    <p>“You're late!”</p>
+                    <del>
+                        <p>“I apologize for the delay.”</p>
+                    </del>
+                    <ins cite="/"
+                         datetime="2021-11-28T22:15:00-01:00">
+                        <p>“A wizard is never late …”</p>
+                    </ins>
+                    <hr>
+                    <p>“You're late!”</p>
+                    <del> “I apologize for the delay.” </del>
+                    <ins cite=""
+                         datetime="2021-11-28T22:15:00-01:00"> “A wizard is never late …” </ins>
+                    <del>
+                        <p>Tityre, tu patulae recubans sub tegmine fagi dolor. Tu quoque, Brute, fili mi, nihil timor populi, nihil! Quae vero auctorem tractata ab fiducia dicuntur.</p>
+                    </del>
+                    <ins cite=""
+                         datetime="2021-11-28T22:15:00-01:00">
+                        <p>Unam incolunt Belgae, aliam Aquitani, tertiam. Inmensae subtilitatis, obscuris et malesuada fames. </p>
+                    </ins>
+                    <ins cite=""
+                         datetime="2021-11-28T22:15:00-01:00">
+                        <p>Etiam habebis sem dicantur magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</p>
+                    </ins>
+                    <hr>
+                    <p>“You're late!”</p>
+                    <del data-insdel-inline>
+                        <p>“I apologize for the delay.”</p>
+                    </del>
+                    <ins data-insdel-inline
+                         cite=""
+                         datetime="2021-11-28T22:15:00-01:00">
+                        <p>“A wizard is never late …”</p>
+                    </ins>
+                    <p>Quisque ut dolor gravida, placerat libero vel, euismod. Cum sociis natoque penatibus et magnis dis parturient. </p>
+                    <hr>
+                    <p>“You're late! Again!”</p>
+                    <p><del data-insdel-inline> “I apologize for the delay.” </del>
+                        <ins data-insdel-inline
+                             cite=""
+                             datetime="2021-11-28T22:15:00-01:00"> “A wizard is never late …” </ins> Quisque ut dolor gravida, placerat libero vel, euismod. Cum sociis natoque penatibus et magnis dis parturient.
+                    </p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+ins,
+del {
+    align-items: baseline;
+    display: flex;
+    font-weight: bolder;
+    line-height: 1.5em;
+    padding-inline-end: 0.5em;
+    padding: 0.2em 0;
+    position: relative;
+    text-decoration: none;
+    &amp;:before {
+        padding: 0 0.5em;
+    }
+    p {
+        display: inline;
+        margin: 0;
+        width: 100%;
+
+    }
+    &amp;[data-insdel-inline] {
+        border-top: 0;
+        display: inline;
+        padding: 0.2em 0 0.25em;
+        &amp;:before {
+            padding: 0 0.25em 0 0.5em;
+        }
+    }
+}
+ins {
+    background-color: hsl(120, 100%, 96%);
+    &amp;:before {
+        content: '\0002B';
+        color: rgb(1, 165, 1);
+    }
+}
+del {
+    background-color: hsl(348, 100%, 97%);
+    color: #777777;
+    &amp;:before {
+        color: rgb(219, 1, 1);
+        content: '\02212';
+    }
+}
+
+                    </code></pre>
+                    <h5>Inline version using <code>[data-insdel-inline]</code>
+                    </h5>
+                    <pre><code data-code-type="HTML">
+&lt;p&gt;“You&#39;re late!”&lt;/p&gt;
+&lt;del data-insdel-inline&gt;
+    &lt;p&gt;“I apologize for the delay.”&lt;/p&gt;
+&lt;/del&gt;
+&lt;ins data-insdel-inline cite=&quot;&quot; datetime=&quot;2021-11-28T22:15:00-01:00&quot;&gt;
+    &lt;p&gt;“A wizard is never late …”&lt;/p&gt;
+&lt;/ins&gt;
+&lt;p&gt;Quisque ut dolor gravida, placerat libero vel, euismod.
+    Cum sociis natoque penatibus et magnis dis parturient.
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;“You&#39;re late! Again!”&lt;/p&gt;
+&lt;p&gt;
+&lt;del data-insdel-inline&gt; “I apologize for the delay.” &lt;/del&gt;
+&lt;ins data-insdel-inline cite=&quot;&quot; datetime=&quot;2021-11-28 22.14&quot;&gt; “A wizard is never late …” &lt;/ins&gt; Quisque ut dolor gravida, placerat libero vel, euismod. Cum sociis natoque penatibus et magnis dis parturient.&lt;/p&gt;
+
+                    </code></pre>
+                </article>
+            </section>
+            <!-- embedded content OK -->
+            <section>
+                <h2 id="embeddedcontent"
+                    data-toc>Embedded content</h2>
+                <!-- embed element DO NOT USE, USE ALTERNATIVES-->
+                <!-- <article>
+                    <a id="embed"></a>
+                    <h3><code>&lt;embed&gt;</code> element</h3>
+                    <ul class="info">
+                        <li>no changes</li>
+                    </ul>
+                    <embed data-reno-aspect="43" class="half"
+                           src="assets/friday.mp4"
+                           type="video/mp4" >
+                </article> -->
+                <!-- iframe element OK -->
+                <!--  <article>
+                    <h3 id="iframe"><code>&lt;iframe&gt;</code> element</h3>
+                    <iframe src="https://example.org"
+                            title="iframe Example 1"
+                            width="100%"
+                            height="300">
+                    </iframe>
+                </article> -->
+                <!-- object and param elements DO NOT USE -->
+                <!-- <article>
+                    <h3 id="object"><code>&lt;object&gt;</code> and
+                        <code>&lt;param&gt;</code> elements</h3>
+                    <ul class="info">
+                        <li>OK</li>
+                        <li class="red">TODO: get the width of the object with
+                            JS and set the height to the aspect ratio. (set the
+                            aspect ratio in data-aspect="AP";</li>
+                    </ul>
+                    <object type="application/pdf"
+                            data="assets/In-CC0.pdf"
+                            data-reno-aspect="AP">
+                    </object>
+                    <object data="assets/t-rex-roar.mp3">
+                        <param name="autoplay"
+                               value="true">
+                    </object>
+                </article> -->
+                <!-- picture element OK -->
+                <article>
+                    <h3 id="picture"><code>&lt;picture&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-extra>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end green"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <picture>
+                        <source srcset="assets/office-view.jpg">
+                        <img src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                    </picture>
+                    <p>Curabitur blandit tempus ardua ridiculus sed magna. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Quam diu etiam furor iste tuus nos eludet? Quisque ut dolor gravida, placerat libero vel, euismod. Integer legentibus erat a ante historiarum dapibus.</p>
+                    <picture class="half">
+                        <source srcset="assets/office-view.jpg">
+                        <img src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                    </picture>
+                    <p>Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh. Praeterea iter est quasdam res quas ex communi. Quisque placerat facilisis egestas cillum dolore. At nos hinc posthac, sitientis piros Afros. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                    <picture class="half float-right">
+                        <source srcset="assets/office-view.jpg">
+                        <img src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                    </picture>
+                    <p>Qui ipsorum lingua Celtae, nostra Galli appellantur. Pellentesque habitant morbi tristique senectus et netus. Salutantibus vitae elit libero, a pharetra augue. Contra legem facit qui id facit quod lex prohibet. Nec dubitamus multa iter quae et nos invenerat. Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</p>
+                    <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Phasellus laoreet lorem vel dolor tempus vehicula. Quo usque tandem abutere, Catilina, patientia nostra? Morbi fringilla convallis sapien, id pulvinar odio volutpat. </p>
+                    <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Phasellus laoreet lorem vel dolor tempus vehicula. Quo usque tandem abutere, Catilina, patientia nostra? Morbi fringilla convallis sapien, id pulvinar odio volutpat. </p>
+                    <picture class="half float-left">
+                        <source srcset="assets/office-view.jpg">
+                        <img src="assets/office-view.jpg"
+                             alt="photograph - office view - copyright HBG 2018">
+                    </picture>
+                    <p>Prima luce, cum quibus mons aliud consensu ab eo. Idque Caesaris facere voluntate liceret: sese habere. Gallia est omnis divisa in partes tres, quarum.</p>
+                    <p>Morbi odio eros, volutpat ut pharetra vitae, lobortis sed nibh. Praeterea iter est quasdam res quas ex communi. Quisque placerat facilisis egestas cillum dolore. At nos hinc posthac, sitientis piros Afros. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                </article>
+                <!-- portal element DO NOT USE -->
+                <!-- <article>
+                    <h3 id="portal"><code>&lt;portal&gt;</code> element</h3>
+                    <ul class="info">
+                        <li>Element is experimental.</li>
+                    </ul>
+                    <portal referrerpolicy="origin"
+                            id="exampleportal"
+                            src="https://crossfonts.stenito.com/"></portal>
+                </article> -->
+                <!-- source element OK -->
+                <!-- <article>
+                    <a id=""></a><h3><code>&lt;source&gt;</code> element</h3>
+                </article> -->
+            </section>
+            <!-- tabular data -->
+            <section>
+                <h2 id="tabulardata"
+                    data-toc>Tabular data</h2>
+                <p>Since <code>&lt;table&gt;</code> markup is not the most practical on smaller screens, Renormalize <code>&lt;table&gt;</code> overflow scrolls horizontal on smaller screens.</p>
+                <p><code>&lt;table&gt;</code> markup is used to display data. The default style is just that. Functional.</p>
+                <div class="tags">
+                    <div class="tag"
+                         data-tag-type-behavior>
+                        <div class="tag-start"></div>
+                    </div>
+                    <div class="tag"
+                         data-tag-type-layout>
+                        <div class="tag-start"></div>
+                    </div>
+                    <div class="tag"
+                         data-tag-type-styling>
+                        <div class="tag-start"></div>
+                    </div>
+                </div>
+                <div class="tags">
+                    <div class="tag"
+                         data-tag-status-ok>
+                        <div class="tag-start"></div>
+                        <div class="tag-end"></div>
+                    </div>
+                    <div class="tag"
+                         data-tag-status-todo-none>
+                        <div class="tag-start"></div>
+                        <div class="tag-end">1</div>
+                    </div>
+                    <div class="tag"
+                         data-tag-status-issue-none>
+                        <div class="tag-start"></div>
+                        <div class="tag-end">0</div>
+                    </div>
+                    <div class="tag"
+                         data-tag-status-remark>
+                        <div class="tag-start"></div>
+                        <div class="tag-end">1</div>
+                    </div>
+                </div>
+                <ul class="info">
+                    <li class="todo">Other styles of responsive tables... </li>
+                    <li class="remark">Other table styling based on flexbox or grid is coming soon.</li>
+                </ul>
+                <h4><code>&lt;table&gt;</code> example</h4>
+                <p data-reno-subheading>(With <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code>) </p>
+                <h5>Superheroes and some of their stuff</h5>
+                <table>
+                    <caption>The information in this table is fictional. </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Superman</th>
+                            <th scope="col">Batman</th>
+                            <th scope="col">Catwoman</th>
+                            <th scope="col">Robin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Super Powers</th>
+                            <td>yes</td>
+                            <td>yes</td>
+                            <td>yes</td>
+                            <td>no</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gender</th>
+                            <td>male</td>
+                            <td>male</td>
+                            <td>female</td>
+                            <td>male</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wealthy</th>
+                            <td>no</td>
+                            <td>very</td>
+                            <td>unknown</td>
+                            <td>no</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ancestors</th>
+                            <td>alien</td>
+                            <td>human</td>
+                            <td>human</td>
+                            <td>human</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Purrs</th>
+                            <td>no</td>
+                            <td>maybe</td>
+                            <td>yes</td>
+                            <td>no</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Conclusion</td>
+                            <td>Okay</td>
+                            <td>Cool</td>
+                            <td>Nice</td>
+                            <td>Weird</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <span class="spacer"></span>
+                <!-- table element OK -->
+                <article>
+                    <h3 id="table"><code>&lt;table&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-behavior>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+table {
+    -ms-overflow-style: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    margin: 1.5em 0;
+    max-width: 100%;
+    overflow-x: auto;
+    position: relative;
+    scrollbar-width: none;
+    white-space: nowrap;
+    &amp;::-webkit-scrollbar {
+        display: none;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- caption element OK -->
+                <article>
+                    <h3 id="caption"><code>&lt;caption&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+caption {
+    caption-side: bottom;
+    color: #999999;
+    line-height: 1;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    padding-inline: 2em;
+    text-align: start;
+}
+                    </code></pre>
+                </article>
+                <!-- col element OK -->
+                <article>
+                    <h3 id="col"><code>&lt;colgroup&gt;</code> and <code>&lt;col&gt;</code> elements</h3>
+                    <div class="tags">
+                        <!-- <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div> -->
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="issue">Not supported in Chrome / Safari / ... </li>
+                    </ul>
+                </article>
+                <!-- thead element OK -->
+                <article>
+                    <h3 id="thead"><code>&lt;thead&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+thead {
+    tr {
+        color: white;
+        background-color: #aaaaaa;
+        font-weight: bolder;
+        border-bottom: 2px solid #666;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- tbody element OK -->
+                <article>
+                    <h3 id="tbody"><code>&lt;tbody&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+tbody {
+    tr {
+        &amp;:nth-child(even) {
+            background-color: #ffffff;
+        }
+        &amp;:nth-child(odd) {
+            background-color: #f6f6f6;
+        }
+    }
+    th {
+        text-align: start;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- tfoot element OK -->
+                <article>
+                    <h3 id="tfoot"><code>&lt;tfoot&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+tfoot {
+    border-top: 2px solid #666666;
+    tr {
+        background-color: #dddddd;
+        font-weight: bolder;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- tr element -->
+                <article>
+                    <h3 id="tr"><code>&lt;tr&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+thead {
+    tr {
+        color: white;
+        background-color: #aaaaaa;
+        font-weight: bolder;
+        border-bottom: 2px solid #666;
+    }
+}
+tbody {
+    tr {
+        &amp;:nth-child(even) {
+            background-color: #ffffff;
+        }
+        &amp;:nth-child(odd) {
+            background-color: #f6f6f6;
+        }
+    }
+}
+tfoot {
+    tr {
+        background-color: #dddddd;
+        font-weight: bolder;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- td element -->
+                <article>
+                    <h3 id="td"><code>&lt;td&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+td {
+    min-width: fit-content;
+    padding: 1em 2em;
+    &amp;:not(:last-of-type), &amp;:first-of-type:last-of-type {
+        border-inline-end: 1px dotted grey;
+    }
+}
+                    </code></pre>
+                </article>
+                <!-- th element -->
+                <article>
+                    <h3 id="th"><code>&lt;th&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <p><a href="#tabulardata">See <code>&lt;table&gt;</code> markup example</a></p>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+th {
+    font-weight: bolder;
+    padding: 1em 2em;
+    text-align: start;
+    &amp;:not(:last-of-type), &amp;:first-of-type:last-of-type {
+        border-inline-end: 1px dotted grey;
+    }
+}
+                    </code></pre>
+                </article>
+            </section>
+            <!-- forms -->
+            <section>
+                <h2 id="forms"
+                    data-toc>Forms</h2>
+                <article>
+                    <h3 id="defaultform">Default form</h3>
+                    <form autocomplete="off">
+                        <label for="firstname">First Name</label>
+                        <input class="test"
+                               required
+                               id="firstname"
+                               type="text"
+                               name="First Name"
+                               placeholder="eg. Steven"
+                               autocomplete="given-name"
+                               minlength="2"
+                               pattern="^\s*\S+(\s?\S)*\s*$">
+                        <label class="test"
+                               for="lastname">Last Name</label>
+                        <input id="lastname"
+                               type="text"
+                               name="Last Name"
+                               autocomplete="family-name"
+                               minlength="2"
+                               pattern="^\s*\S+(\s?\S)*\s*$"
+                               placeholder="eg. Smith">
+                        <label for="email">Email</label>
+                        <input required
+                               id="email"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                               type="email"
+                               name="Email"
+                               placeholder="eg. info@steven.be"
+                               autocomplete="off">
+                        <label for="birthday">Birthday</label>
+                        <input type="date"
+                               id="birthday"
+                               name="birthday"
+                               required
+                               min="1900-01-11"
+                               max="2021-01-01">
+                        <button type="submit">Submit</button>
+                    </form>
+                </article>
+                <!-- button element -->
+                <article>
+                    <h3 id="button"><code>&lt;button&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <button type="button">A button</button>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- datalist element -->
+                <article>
+                    <h3 id="datalist"><code>&lt;datalist&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-todo>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="issue">Is buggy in some browsers.</li>
+                    </ul>
+                </article>
+                <!-- fieldset element -->
+                <article>
+                    <h3 id="fieldset"><code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <form action="/"
+                          autocomplete="off">
+                        <fieldset>
+                            <legend>Personalia</legend>
+                            <label for="fname">First name</label>
+                            <input type="text"
+                                   id="fname"
+                                   name="fname">
+                            <label for="lname">Last name</label>
+                            <input type="text"
+                                   id="lname"
+                                   name="lname">
+                            <label for="email2">Email</label>
+                            <input type="email"
+                                   id="email2"
+                                   name="personalia email"
+                                   autocomplete="off">
+                        </fieldset>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- form element -->
+                <article>
+                    <h3 id="form"><code>&lt;form&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- input element -->
+                <article>
+                    <h3 id="input"><code>&lt;input&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <form action=""
+                          autocomplete="off">
+                        <label for="">text</label>
+                        <p>Additional information in a paragraph</p>
+                        <input type="text">
+                        <div class="helper">
+                            <input id="checkfive"
+                                   type="checkbox">
+                            <label for="checkfive">checkbox</label>
+                        </div>
+                        <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Tityre, tu patulae recubans sub tegmine fagi dolor. Hi omnes lingua, institutis, legibus inter se differunt. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Curabitur est gravida et libero vitae dictum.</p>
+                        <div class="helper">
+                            <input id="radioseven"
+                                   name="radios"
+                                   type="radio">
+                            <label for="radioseven">radio</label>
+                        </div>
+                        <div class="helper">
+                            <input id="radioeight"
+                                   name="radios"
+                                   type="radio">
+                            <label for="radioeight">radio</label>
+                        </div>
+                        <label for="">color</label>
+                        <input type="color"
+                               tabindex="0">
+                        <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Tityre, tu patulae recubans sub tegmine fagi dolor. Hi omnes lingua, institutis, legibus inter se differunt. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Curabitur est gravida et libero vitae dictum.</p>
+                        <fieldset>
+                            <legend>Pick one or more</legend>
+                            <div class="helper">
+                                <input name="d"
+                                       id="checkone"
+                                       type="checkbox">
+                                <label for="checkone">one</label>
+                            </div>
+                            <div class="helper">
+                                <input name="f"
+                                       id="checktwo"
+                                       type="checkbox">
+                                <label for="checktwo">Paullum deliquit, ponderibus modulisque suis ratio utitur. Cum ceteris in veneratione tui montes, nascetur mus. Quae vero auctorem tractata ab fiducia dicuntur.</label>
+                            </div>
+                            <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Tityre, tu patulae recubans sub tegmine fagi dolor. Hi omnes lingua, institutis, legibus inter se differunt. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Curabitur est gravida et libero vitae dictum.</p>
+                            <div class="helper">
+                                <input name="e"
+                                       id="checkthree"
+                                       type="checkbox">
+                                <label for="checkthree">three</label>
+                            </div>
+                        </fieldset>
+                        <label for="textarea">Textarea</label>
+                        <textarea name="textarea"
+                                  id="textarea"
+                                  cols="50"
+                                  rows="10"
+                                  placeholder="textarea"></textarea>
+                        <fieldset>
+                            <legend>Pick one</legend>
+                            <div class="helper">
+                                <input id="one"
+                                       name="a"
+                                       type="radio">
+                                <label for="one">one</label>
+                            </div>
+                            <p>Ullamco laboris nisi ut aliquid ex ea commodi consequat. Tityre, tu patulae recubans sub tegmine fagi dolor. Hi omnes lingua, institutis, legibus inter se differunt. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Curabitur est gravida et libero vitae dictum.</p>
+                            <div class="helper">
+                                <input name="a"
+                                       id="two"
+                                       type="radio">
+                                <label for="two">Paullum deliquit, ponderibus modulisque suis ratio utitur. Cum ceteris in veneratione tui montes, nascetur mus. Quae vero auctorem tractata ab fiducia dicuntur.</label>
+                            </div>
+                            <div class="helper">
+                                <input name="a"
+                                       id="three"
+                                       type="radio">
+                                <label for="three">three</label>
+                            </div>
+                        </fieldset>
+                        <p>datetime is obsolete</p>
+                        <label for="">datetime-local</label>
+                        <input type="datetime-local">
+                        <label for="date">date</label>
+                        <input id="date"
+                               type="date">
+                        <label for="date2">date</label>
+                        <input id="date2"
+                               type="date"
+                               dir="rtl">
+                        <p>Week is not supported by Safari and Firefox</p>
+                        <p>Month does not work on safari or firefox desktop</p>
+                        <label for="">time</label>
+                        <input type="time">
+                        <label for="output">output</label>
+                        <output id="output">Quae vero auctorem tractata ab fiducia dicuntur.</output>
+                        <label for="">email</label>
+                        <input type="email"
+                               disabled
+                               placeholder="aaa@bbb.ccc">
+                        <label for="">file</label>
+                        <input type="file">
+                        <label for="num">number</label>
+                        <input id="num"
+                               name="Number"
+                               type="number"
+                               autocomplete="off"
+                               data-1pignore>
+                        <label for="num2">number</label>
+                        <input id="num2"
+                               name="Number"
+                               type="number"
+                               autocomplete="off"
+                               data-1pignore>
+                        <label for="">password</label>
+                        <input type="password"
+                               autocomplete="off">
+                        <label for="">range</label>
+                        <input type="range">
+                        <label for="">progress</label>
+                        <progress max="100"
+                                  value="70"> 70%</progress>
+                        <progress max="100">0</progress>
+                        <label for="">search</label>
+                        <input type="search">
+                        <!-- FUTURE: [type="search"] replace default behavior with something cross browser -->
+                        <p>Search cancel button can not be styled.</p>
+                        <label for="">tel</label>
+                        <input type="tel"
+                               required
+                               placeholder="+32 4** ** ** **"
+                               pattern="\+.*">
+                        <label for="">url</label>
+                        <input type="url"
+                               pattern="https://.*"
+                               placeholder="https://...">
+                        <label for="dino-select3">Choose a dinosaur</label>
+                        <select id="dino-select3"
+                                size="3">
+                            <option selected>Saltasaurus</option>
+                            <option>Apatosaurus</option>
+                            <optgroup label="Others">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                        </select>
+                        <label for="dino-select2">Choose a dinosaur</label>
+                        <select id="dino-select2">
+                            <option>Tyrannosaurus</option>
+                            <option selected>Velociraptor</option>
+                            <option>Deinonychus</option>
+                            <option>Diplodocus</option>
+                            <option>Saltasaurus</option>
+                            <option>Apatosaurus</option>
+                            <optgroup label="Others">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                        </select>
+                        <label for="dino-select">Choose a dinosaur</label>
+                        <select id="dino-select">
+                            <optgroup label="Theropods">
+                                <option>Tyrannosaurus</option>
+                                <option selected>Velociraptor</option>
+                                <option>Deinonychus</option>
+                            </optgroup>
+                            <optgroup label="Sauropods">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                            <optgroup label="Others">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                        </select>
+                        <label for="dino-select1">Choose a dinosaur</label>
+                        <select id="dino-select1"
+                                size="5">
+                            <optgroup label="Theropods">
+                                <option>Tyrannosaurus</option>
+                                <option selected>Velociraptor</option>
+                                <option>Deinonychus</option>
+                            </optgroup>
+                            <optgroup label="Sauropods">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                            <optgroup label="Others">
+                                <option>Diplodocus</option>
+                                <option>Saltasaurus</option>
+                                <option>Apatosaurus</option>
+                            </optgroup>
+                        </select>
+                        <fieldset>
+                            <legend>Car information</legend>
+                            <label for="fuel">Temperature</label>
+                            <meter id="temp"
+                                   min="0"
+                                   max="100"
+                                   low="45"
+                                   high="55"
+                                   optimum="50"
+                                   value="60"> at 60 </meter>
+                            <label for="fuel">Fuel level</label>
+                            <meter id="fuel"
+                                   min="0"
+                                   max="100"
+                                   low="10"
+                                   high="66"
+                                   optimum="80"
+                                   value="9"> at 9/100 </meter>
+                            <label for="fuel">Oil level</label>
+                            <meter id="oil"
+                                   min="0"
+                                   max="100"
+                                   low="33"
+                                   high="110"
+                                   optimum="96"
+                                   value="96"> at 90/100 </meter>
+                        </fieldset>
+                        <button type="button">Hello</button>
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- input button element -->
+                <article>
+                    <h3 id="inputbutton">
+                        <code>&lt;input type="button"&gt;</code> element
+                    </h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <button type="button">Hello</button>
+                    <button type="reset">Reset</button>
+                    <p>input type="image" is "not" valid HTML: prefer button. </p>
+                    <button type="submit">Submit</button>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- input text element -->
+                <article>
+                    <h3 id="inputtext"><code>&lt;input type="text"&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <form action="#"
+                          autocomplete="off">
+                        <input type="text"
+                               placeholder="placeholder">
+                        <button type="submit">Submit</button>
+                    </form>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- label element -->
+                <article>
+                    <h3 id="label"><code>&lt;label&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <h5>In a <code>&lt;form&gt;</code> element</h5>
+                    <form action="/"
+                          autocomplete="off">
+                        <label for="name">Name</label>
+                        <input type="text"
+                               id="name"
+                               name="name">
+                        <button type="submit">Submit</button>
+                    </form>
+                    <h5>Outside a <code>&lt;form&gt;</code> element</h5>
+                    <h6><code>&lt;input&gt;</code> before <code>&lt;label&gt;</code></h6>
+                    <label for="firstname2">First Name</label>
+                    <input type="text"
+                           id="firstname2"
+                           name="First Name">
+                    <label for="lastname2">Last Name</label>
+                    <input type="text"
+                           id="lastname2"
+                           name="Last Name">
+                    <h6><code>&lt;input&gt;</code> nested in <code>&lt;label&gt;</code></h6>
+                    <label>First Name <input type="text"
+                               id="firstname3"
+                               name="First Name3"></label>
+                    <label>Last Name <input type="text"
+                               id="lastname3"
+                               name="Last Name3"></label>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- meter element -->
+                <article>
+                    <h3 id="meter"><code>&lt;meter&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ongoing>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <h4>Example</h4>
+                    <h5>In a <code>&lt;form&gt;</code> element</h5>
+                    <form action="/"
+                          autocomplete="off">
+                        <label for="temp2">Temperature</label>
+                        <meter id="temp2"
+                               min="0"
+                               max="100"
+                               low="45"
+                               high="55"
+                               optimum="50"
+                               value="60"> at 60 </meter>
+                        <label for="fuel2">Fuel level</label>
+                        <meter id="fuel2"
+                               min="0"
+                               max="100"
+                               low="10"
+                               high="66"
+                               optimum="80"
+                               value="9"> at 9/100 </meter>
+                        <label for="oil2">Oil level</label>
+                        <meter id="oil2"
+                               min="0"
+                               max="110"
+                               low="33"
+                               high="110"
+                               optimum="98"
+                               value="98"> at 90/100 </meter>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <h5>Outside a <code>&lt;form&gt;</code> element</h5>
+                    <label for="temp1">Temperature</label>
+                    <meter id="temp1"
+                           min="0"
+                           max="100"
+                           low="45"
+                           high="55"
+                           optimum="50"
+                           value="60"> at 60 </meter>
+                    <label for="fuel1">Fuel level</label>
+                    <meter id="fuel1"
+                           min="0"
+                           max="100"
+                           low="10"
+                           high="66"
+                           optimum="80"
+                           value="9"> at 9/100 </meter>
+                    <label for="oil1">Oil level</label>
+                    <meter id="oil1"
+                           min="0"
+                           max="110"
+                           low="33"
+                           high="110"
+                           optimum="98"
+                           value="98"> at 90/100 </meter>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre>
+                </article>
+                <!-- optgroup element -->
+                <article>
+                    <h3 id="optgroup"><code>&lt;optgroup&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-start>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!--  <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+                <!-- option element -->
+                <article>
+                    <h3 id="option"><code>&lt;option&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-start>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!-- <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+                <!-- output element -->
+                <article>
+                    <h3 id="output2"><code>&lt;output&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-start>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!-- <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+                <!-- progress element -->
+                <article>
+                    <h3 id="progress"><code>&lt;progress&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-start>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!-- <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+                <!-- select element -->
+                <article>
+                    <h3 id="select"><code>&lt;select&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-start>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!-- <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+                <!-- textarea element -->
+                <article>
+                    <h3 id="textarea2"><code>&lt;textarea&gt;</code> element </h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-todo>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                    </ul>
+                    <!-- <h4>Example</h4>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+
+                    </code></pre> -->
+                </article>
+            </section>
+            <!-- interactive elements -->
+            <section>
+                <h2 id="interactiveelements"
+                    data-toc>Interactive elements</h2>
+                <!-- details element OK -->
+                <article>
+                    <h3 id="details"><code>&lt;details&gt;</code> element</h3>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-type-layout>
+                            <div class="tag-start"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-type-styling>
+                            <div class="tag-start"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"
+                             data-tag-status-ok>
+                            <div class="tag-start"></div>
+                            <div class="tag-end"></div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-todo-none>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-issue>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">1 non </div>
+                        </div>
+                        <div class="tag"
+                             data-tag-status-remark>
+                            <div class="tag-start"></div>
+                            <div class="tag-end">0</div>
+                        </div>
+                    </div>
+                    <ul class="info">
+                        <li class="issue">Safari does not show the list-item marker outside on summary element.</li>
+                    </ul>
+                    <h4>Example</h4>
+                    <details>
+                        <summary>Details</summary>
+                        <p>Something small enough to escape casual notice.</p>
+                    </details>
+                    <h4>SCSS</h4>
+                    <pre><code data-code-type="SCSS">
+details {
+    // normalize.css
+    // Add the correct display in Edge, IE 10+, and Firefox
+    display: block;
+    summary {
+        // normalize.css
+        // Add the correct display in all browsers
+        display: list-item;
+
+        // renormalize
+        &amp;::marker {
+            color: #666666;
+        }
+        &lt; * {
+            display: inline;
+        }
+        background-color: #eeeeee;
+        cursor: pointer;
+        padding: 0.5em;
+        &amp;:first-of-type {
+            border-radius: 0.25em;
+            &amp;:hover {
+                background-color: #dddddd;
+            }
+        }
+    }
+    &lt; :not(summary) {
+        margin-inline-start: 1.5em;
+        margin-inline-end: 0.5em;
+    }
+    &amp;[open] {
+        summary {
+            &amp;:first-of-type {
+                border-bottom: none;
+            }
+            &amp;:not(:first-of-type) {
+                background-color: transparent;
+                list-style-type: none;
+                margin-inline-start: 1.5em;
+                margin-inline-end: 0.5em;
+                padding-inline-start: 0;
+                cursor: unset;
+            }
+            &amp;:last-of-type:not(:first-of-type) {
+                border-bottom: 1px solid #cccccc;
+            }
+        }
+    }
+}
+                    </code></pre>
+                </article>
+            </section>
+        </main>
+    </div>
+    <script src="renormalize.js"></script>
+    <script src="page.js"></script>
+</body>
+
+</html>

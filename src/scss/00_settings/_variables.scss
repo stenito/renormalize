@@ -1,0 +1,79 @@
+@charset 'utf8';
+
+$var-font-family-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+
+// SOMEDAY: mono font-family => optimize list => test with crossfonts
+$var-font-family-mono: 'Menlo', Consolas, 'Andale Mono WT', 'Lucida Console', Monaco, monospace-monospace !default;
+
+$var-font-weight-default: 200 !default;
+
+$var-line-height-default: 1.15 !default;
+
+$var-font-weight-bold: $var-font-weight-default + 400 !default;
+
+$var-color-selection: hsl(211, 97%, 85%) !default;
+
+$var-color-okay: hsl(120, 99%, 33%) !default;
+$var-color-alert: hsl(39, 100%, 55%) !default;
+$var-color-danger: hsl(0, 99%, 43%) !default;
+
+$var-font-size-h1: 3em !default;
+$var-font-size-h2: 2em !default;
+$var-font-size-h3: 1.6em !default;
+$var-font-size-h4: 1.35em !default;
+$var-font-size-h5: 1.15em !default;
+$var-font-size-h6: 1em !default;
+
+$var-heading-spacing-top: 1.5em !default;
+$var-heading-spacing-bottom: 0.5em !default;
+
+// Never set opacity, transparency on text. It creates bad UX with fonts and scripts that overlap characters.
+// If you want transparent text, set the opacity of the parent element of the text or use a span.
+$var-color-default: hsl(0, 0%, 5%) !default;
+
+// #endregion font and text styling variables
+
+// #region layout variables
+
+// article
+$var-article-spacing: 5em !default;
+
+// forms
+$var-color-form-elements: hsl(0, 0%, 0%) !default;
+$var-color-form-elements-disabled: hsl(0, 0%, 100%) !default;
+
+$var-color-form-elements-border: hsl(0, 0%, 80%) !default;
+$var-color-form-elements-border-disabled: hsl(0, 0%, 93%) !default;
+
+$var-color-form-elements-background: hsl(0, 0%, 100%) !default;
+
+$var-color-form-range-thumb-background: hsl(0, 0%, 100%) !default;
+
+$var-color-button: hsl(0, 0%, 20%);
+$var-color-button-border: $var-color-form-elements-border !default;
+$var-color-button-background: hsl(0, 0%, 90%) !default;
+$var-color-button-background-hover: hsl(0, 0%, 80%) !default;
+
+$var-color-fieldset-border: $var-color-form-elements-border !default;
+$var-color-fieldset-border-focus: hsl(0, 0%, 0%) !default;
+
+$var-color-placeholder: hsl(0, 0%, 67%) !default;
+
+$var-color-meter-background: hsl(0, 0%, 93%) !default;
+$var-color-meter-okay: $var-color-okay !default;
+$var-color-meter-alert: $var-color-alert !default;
+$var-color-meter-danger: $var-color-danger !default;
+
+$var-color-progress: hsl(213, 100%, 50%) !default;
+$var-color-progress-background: hsl(0, 0%, 93%) !default;
+$var-color-progress-waiting: hsl(213, 100%, 90%) !default;
+
+$var-color-output-background: hsl(0, 0%, 93%) !default;
+
+// Radius
+
+$var-radius-full: 65536px !default;
+$var-radius-circle: $var-radius-full;
+$var-radius-pill: $var-radius-full;
+
+// #endregion layout variables

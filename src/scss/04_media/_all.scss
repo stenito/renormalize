@@ -1,0 +1,97 @@
+@charset 'utf8';
+
+area {
+    // SOMEDAY: <area> look at browser differences in html.css
+}
+
+img {
+}
+
+figure,
+img,
+picture {
+    // SOMEDAY: <img> look at browser differences in html.css
+    width: 100%;
+    margin: 1em 0;
+}
+
+picture {
+    // SOMEDAY: <picture> responsive with media inline queries
+    display: block;
+    img {
+        margin: 0;
+    }
+    source {
+        // not stylable
+    }
+}
+
+figure {
+    figcaption {
+        color: #999999;
+    }
+    img {
+        margin: 0;
+    }
+}
+
+figure,
+img,
+picture {
+    &[style*='float: left'] {
+        margin: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 1.5em;
+    }
+    &[style*='float: right'] {
+        margin: 0;
+        margin-inline-end: 0em;
+        margin-inline-start: 1.5em;
+    }
+}
+// bidi
+html[dir='rtl'] {
+    figure,
+    img,
+    picture {
+        &[style*='float: right'] {
+            margin: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 1.5em;
+        }
+        &[style*='float: left'] {
+            margin: 0;
+            margin-inline-end: 0;
+            margin-inline-start: 1.5em;
+        }
+    }
+}
+
+audio {
+    // Set size across browsers.
+    width: 100%;
+    height: 2em;
+    &[controls] {
+        // BIDI: bidi ==> firefox UA stylesheet
+    }
+    &:not([controls]) {
+        // BIDI: Why not in all browsers?
+    }
+}
+
+map {
+    // SOMEDAY: <map> look at differences accross browsers
+}
+
+source {
+}
+
+track {
+}
+
+video {
+    // FUTURE: Set element height to aspect ratio with JavaScript? See adaptive video loading
+    // SOMEDAY: <video> check poster image differences accross browsers
+    ::cue {
+    }
+}

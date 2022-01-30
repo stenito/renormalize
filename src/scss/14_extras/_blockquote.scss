@@ -1,0 +1,13 @@
+@charset 'utf8';
+
+blockquote {
+    cite {
+        + span {
+            color: #666666;
+            display: inline;
+            font-weight: bolder;
+            margin-top: 0.5em;
+            font-style: italic;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+@charset 'utf8';
+
+details {
+    summary {
+        background-color: #eeeeee;
+        border-radius: 0.25em;
+        cursor: pointer;
+        font-weight: bolder;
+        padding: 0.5em;
+        transition: background-color 100ms ease-in-out;
+        &:hover {
+            background-color: #dddddd;
+        }
+        &::marker {
+            color: #666666;
+        }
+    }
+    > :not(summary) {
+        margin-inline-start: 1.5em;
+        margin-inline-end: 0.5em;
+    }
+    &[open] {
+    }
+}
+
+dialog {
+    // DO NOT USE: <dialog> 2021-12-21 13.49 Element is experimental and does not work in most browsers
+}
+
+menu {
+    // DO NOT USE: <menu> 2021-12-20 19.50 Element is very experimental and does not work in most browsers
+}

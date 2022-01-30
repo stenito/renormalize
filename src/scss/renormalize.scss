@@ -1,0 +1,141 @@
+@charset 'utf-8';
+
+@import '00_settings/all';
+
+// BUG: Safari reader version shows only <ol> and a bit further... why???
+
+*,
+*:before,
+*::before,
+*:after,
+*::after {
+    // All children inherit box-sizing from HTML element (this allows third party plugins to set their own box-sizing policy).
+    box-sizing: inherit;
+
+    // Remove the black background flash on tap in iOS Safari.
+    -webkit-tap-highlight-color: transparent;
+    // SOMEDAY: -webkit-backface-visibility: hidden; // check if needed.
+}
+
+html {
+    // FUTURE: Dark-mode support
+
+    // Set box-sizing policy
+    box-sizing: border-box;
+
+    // Set font to a sans-serif font with as many weights as possible for all browsers. ==> settings
+    // FUTURE: Test JS solution to check webfont weights and variations needed to load CC (Critical Content) by putting CC style in the head. (bolder might be an issue here...)
+
+    font-family: $var-font-family-sans;
+
+    // Set font-weight to 200 to have a clear difference between normal, bolder and bold. Best enjoyed with font-smoothing on. ==> settings
+    font-weight: $var-font-weight-default;
+
+    @if $set-font-smoothing {
+        -webkit-font-smoothing: antialiased;
+        font-smooth: always;
+    }
+
+    @if $set-text-rendering == 'auto' {
+        text-rendering: auto;
+    } @else if $set-text-rendering == 'speed' {
+        text-rendering: optimizeSpeed;
+    } @else {
+        text-rendering: geometricPrecision;
+    }
+
+    // TODO: <html> rules: check the following rules.
+    quotes: '“' '”'; // LANGUAGE SUPPORT (different in other languages)
+    font-synthesis: none;
+    font-feature-settings: 'kern';
+    -moz-osx-font-smoothing: grayscale;
+
+    // Remove the text shadow on user text selection and set opaque selection color
+    ::selection {
+        background-color: $var-color-selection;
+        text-shadow: none;
+    }
+
+    // COMMENT: Define 1em. Smaller font-sizes cause focus zoom on iOS Safari. Bad user experience. Browsers use 16px as default but added it here to be sure it is set.
+    font-size: 16px;
+
+    // Set default font color
+    color: $var-color-default;
+
+    // Set scroll behavior
+    @if $set-scroll-behavior {
+        scroll-behavior: $set-scroll-behavior;
+    }
+}
+
+body {
+    &:-webkit-full-page-media {
+        // SOMEDAY: why are they defined in user agent stylesheets? Don't see any difference.. test!!
+        // background-color: red !important; // webkit
+        // background-color: rgb(255, 0, 0) !important; // chrome
+    }
+}
+
+@import '01_sectioning/all';
+@import '02_text and content/all';
+@import '03_lists/all';
+@import '04_media/all';
+@import '05_edits/all';
+// @import '06_embeds/all';
+@import '07_tables/all';
+@import '08_forms/all';
+@import '09_interactive/all';
+// @import '10_scripting/all';
+// @import '11_svg and mathml/all';
+// @import '12_web components/all';
+// @import '13_global attributes/all';
+@import '14_extras/all';
+
+// #region depricated and obsolete
+
+// The elements below might still be supported in some browsers but should no longer be used in production. By default, renormalize does not display them.
+
+content,
+dir,
+frame,
+frameset,
+isindex,
+menuitem,
+rb,
+rtc,
+shadow {
+    // Depricated
+    display: none;
+}
+
+acronym,
+applet,
+basefont,
+bgsound,
+big,
+blink,
+center,
+command,
+element,
+font,
+image,
+keygen,
+listing,
+marquee,
+multicol,
+nextid,
+nobr,
+noembed,
+noframes,
+plaintext,
+spacer,
+strike,
+tt,
+xmp,
+[contextmenu],
+[type='datetime'] {
+    // Obsolete
+    display: none;
+}
+
+// #endregion depricated and obsolete

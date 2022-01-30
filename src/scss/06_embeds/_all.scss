@@ -1,0 +1,19 @@
+@charset 'utf8';
+
+embed {
+    // DO NOT USE: <embed> Use alternatives (<audio>, <canvas>, <img>, <picture>,  <math>, <svg>, <video>)
+}
+
+iframe {
+    border: 0;
+    // SOMEDAY: <iframe> test focus and focus-visible differences
+    // SOMEDAY: <iframe> check iframe:fullscreen
+}
+
+object {
+    // DO NOT USE: <object> 2021-12-20 22.03 Support is limited.
+}
+
+portal {
+    // DO NOT USE: <portal> 2021-12-20 22.03 Support is very very limited.
+}

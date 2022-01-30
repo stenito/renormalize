@@ -1,0 +1,28 @@
+@charset 'utf8';
+
+article {
+    // Set spacing between articles
+    margin-block-end: $var-article-spacing;
+}
+
+aside {
+}
+
+footer {
+}
+
+header {
+}
+
+main {
+}
+
+nav {
+}
+
+section {
+}
+
+hgroup {
+    // DO NOT USE: <hgroup> Should not be used because no assistive technology supports it, and as a result it has a detrimental effect on assistance for headings placed within it. 2021-12-23 10:59:47
+}

@@ -1,0 +1,29 @@
+@charset 'utf8';
+
+// SOMEDAY: <dl> Description lists : what whith smaller screen sizes
+
+dl[data-dl-horizontal] {
+    display: grid;
+    grid-template-columns: max-content auto;
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    dt {
+        font-weight: bolder;
+        grid-column: 1;
+        margin-top: 0.75em;
+        padding-inline-end: 0.5em;
+        text-align: end;
+        &:after {
+            content: ':';
+        }
+        + dd {
+            margin-bottom: 0;
+            margin-top: 0.75em;
+        }
+    }
+    dd {
+        grid-column: 2;
+        margin-inline-start: 0;
+    }
+}

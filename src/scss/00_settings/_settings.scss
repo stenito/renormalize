@@ -1,0 +1,14 @@
+@charset 'utf8';
+
+// settings
+
+// Set antialiassing of fonts
+$set-font-smoothing: true !default;
+
+// Set text redering by browser.
+// https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering
+$set-text-rendering: precision !default; // auto, speed or precision
+
+// Set scroll behavior
+// 2021-12-20 21.35: Not supported in Safari, but coming soon (TP Desktop supports scroll-behavior)
+$set-scroll-behavior: auto !default; // smooth, auto

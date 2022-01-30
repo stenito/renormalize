@@ -1,0 +1,122 @@
+@charset 'utf8';
+
+// SOMEDAY: <tables> Check firefox extended CSS for tables
+
+table {
+    // Show table with horizontal overflow on smaller viewports.
+    display: block;
+
+    -ms-overflow-style: none;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    max-width: calc(100% + 1em);
+    overflow-x: auto;
+    position: relative;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    white-space: nowrap;
+    margin-inline-end: -1em;
+    padding-inline-end: 1em;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+tr {
+}
+
+td {
+    min-width: fit-content;
+}
+
+th {
+    font-weight: bolder;
+    text-align: start;
+}
+
+caption {
+    caption-side: bottom;
+    color: #999999;
+    line-height: 1;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    text-align: start;
+    max-width: calc(100vw - 1em);
+    white-space: pre-wrap;
+
+}
+
+td,
+th {
+    &:not(:last-of-type),
+    &:first-of-type:last-of-type {
+        border-inline-end: 1px dotted #cccccc;
+    }
+}
+
+td,
+th {
+    padding: 1em 2em;
+}
+
+thead {
+    tr {
+        color: white;
+        background-color: #aaaaaa;
+        font-weight: bolder;
+        border-bottom: 2px solid #666;
+    }
+    td,
+    th {
+        &:not(:last-of-type),
+        &:first-of-type:last-of-type {
+            border-inline-end: 1px dotted #777777;
+        }
+    }
+}
+
+tbody {
+    tr {
+        &:nth-child(even) {
+            background-color: #ffffff;
+        }
+        &:nth-child(odd) {
+            background-color: #f6f6f6;
+        }
+    }
+    th {
+        text-align: start;
+    }
+    td,
+    th {
+        &:not(:last-of-type),
+        &:first-of-type:last-of-type {
+            border-inline-end: 1px dotted #bbbbbb;
+        }
+    }
+}
+
+tfoot {
+    border-top: 2px solid #666666;
+    tr {
+        background-color: #dddddd;
+        font-weight: bolder;
+    }
+    td,
+    th {
+        &:not(:last-of-type),
+        &:first-of-type:last-of-type {
+            border-inline-end: 1px dotted #aaaaaa;
+        }
+    }
+}
+
+col {
+    // DO NOT USE: <col> (checked, described) 2021-12-21 13.36 has issues
+    // Chrome, Safari and Firefox don't do them well...
+}
+
+colgroup {
+    // DO NOT USE: <colgroup> (checked, described) 2021-12-21 13.36 has issues
+    // Chrome, Safari and Firefox don't do them well...
+}

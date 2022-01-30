@@ -1,0 +1,63 @@
+@charset 'utf8';
+
+h1 {
+    + p[data-reno-subheading] {
+        font-size: $var-font-size-h2;
+    }
+}
+
+h2 {
+    + p[data-reno-subheading] {
+        font-size: $var-font-size-h3;
+    }
+}
+
+h3 {
+    + p[data-reno-subheading] {
+        font-size: $var-font-size-h4;
+    }
+}
+
+h4 {
+    + p[data-reno-subheading] {
+        font-size: $var-font-size-h5;
+    }
+}
+
+h5 {
+    + p[data-reno-subheading] {
+        font-size: $var-font-size-h6;
+    }
+}
+
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+    + p[data-reno-subheading],
+    + p[data-reno-subheading] * {
+        font-weight: 100 !important;
+        font-family: $var-font-family-sans;
+        letter-spacing: -0.04em;
+        line-height: $var-line-height-default;
+        padding: unset;
+        color: $var-color-default;
+        background-color: unset;
+    }
+}
+// BIDI: check when doing bidi
+html[dir='rtl'] {
+    h6,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1 {
+        + p[data-reno-subtitle],
+        + p[data-reno-subheading] * {
+            letter-spacing: 0;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@charset 'utf8';
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+[type='file'],
+[type='search'] {
+    // Remove the outline offset in Safari
+    // Targets only Safari 10.1+
+    @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            outline-offset: -2px;
+        }
+    }
+}
+
+::file-selector-button {
+    // Firefox and Webkit UA stylesheets use ::file-selector-button
+    // 1. Correct the inability to style clickable types in iOS and Safari
+    // 2. Change font properties to `inherit` in Safari
+    -webkit-appearance: button; // 1
+    font: inherit; // 2
+}
+
+picture {
+    // Display picture element correctly in all browsers
+    display: block;
+}
+
+::-webkit-datetime-edit {
+    // Remove the padding on the placeholders to correct position
+    padding: 0;
+    &-text {
+        padding: 0;
+    }
+}
