@@ -722,7 +722,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "brackets_orange",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 665227996.86182296
+    "lastBuiltDate" : 665228551.57730901
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
@@ -2012,7 +2012,7 @@
     },
     "esLintSourceType" : 0,
     "externalServerAddress" : "http:\/\/localhost:8888",
-    "gitIgnoreBuildFolder" : 1,
+    "gitIgnoreBuildFolder" : 0,
     "hideConfigFile" : 0,
     "jsCheckerReservedNamesString" : "",
     "languageDefaultsCOFFEE" : {
