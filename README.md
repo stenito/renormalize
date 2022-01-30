@@ -6,15 +6,24 @@ This is work in progress. Use in production at your own discretion.
 
 ## Useage
 
-Renormalize uses SCSS.
-
 ### npm
 
-`npm -i @stenito/renormalize.html`
+Renormalize is coded using SCSS.
 
-Use it in your project: `@import 'scss/renormalize';`
+`npm install @stenito/renormalize --save-dev`
 
-### jsdelivr
+Use it in your project: `@import '@stenito/renormalize/src/renormalize';`
 
-Latest: <https://cdn.jsdelivr.net/npm/@stenito/renormalize/css/style.css>
-Specific version: <https://cdn.jsdelivr.net/npm/@stenito/renormalize@version/css/style.css>
+### CDN
+
+Latest:
+
+- <https://cdn.jsdelivr.net/npm/@stenito/renormalize/css/renormalize.css>
+- <https://unpkg.com/@stenito/renormalize/css/renormalize.css>
+
+Specific version:
+
+(from version 3)
+
+- <https://cdn.jsdelivr.net/npm/@stenito/renormalize@version/css/renormalize.css>
+- <https://unpkg.com/@stenito/renormalize@version/css/renormalize.css>
